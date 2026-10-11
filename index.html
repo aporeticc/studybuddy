@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f6ff" />
+  <title>StudyBuddy — Your study space</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="StudyBuddy home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false">
+            <path d="M7 8.5C10.3 7.1 13.4 7.5 16 9.4v15c-2.6-1.9-5.7-2.3-9-0.9V8.5Z" />
+            <path d="M25 8.5c-3.3-1.4-6.4-1-9 0.9v15c2.6-1.9 5.7-2.3 9-0.9V8.5Z" />
+            <path d="m11 5.7 2.3 2.1L18 3.9" />
+          </svg>
+        </span>
+        <span class="brand-name">StudyBuddy</span>
+      </a>
+
+      <div class="topbar-note">
+        <span class="online-dot" aria-hidden="true"></span>
+        <span>Your personal study space</span>
+      </div>
+    </header>
+
+    <main class="dashboard" id="main-content">
+      <section class="welcome-row" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow" id="todayDate">YOUR STUDY SPACE</p>
+          <h1 id="welcome-title">A little progress goes <span>a long way.</span></h1>
+          <p class="welcome-subtitle">Keep your tasks close, your goals clear, and your next win within reach.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-sparkle sparkle-one">✦</div>
+          <div class="art-sparkle sparkle-two">✧</div>
+          <div class="art-book">
+            <div class="book-page page-left"><span></span><span></span><span></span></div>
+            <div class="book-page page-right"><span></span><span></span><span></span></div>
+          </div>
+          <div class="art-pencil"><span></span></div>
+          <div class="art-orbit"></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Task overview">
+        <article class="stat-card total-card">
+          <div class="stat-icon total-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4.5h6M9 10h6M9 14h4"/></svg>
+          </div>
+          <div class="stat-copy">
+            <p class="stat-label">Total tasks</p>
+            <p class="stat-value" id="totalTasks">0</p>
+          </div>
+          <span class="stat-caption">On your list</span>
+        </article>
+
+        <article class="stat-card completed-card">
+          <div class="stat-icon completed-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.1 2.3 2.4 4.9-5"/></svg>
+          </div>
+          <div class="stat-copy">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value" id="completedTasks">0</p>
+          </div>
+          <span class="stat-caption">Wins collected</span>
+        </article>
+
+        <article class="stat-card remaining-card">
+          <div class="stat-icon remaining-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3 1.8"/></svg>
+          </div>
+          <div class="stat-copy">
+            <p class="stat-label">Still to do</p>
+            <p class="stat-value" id="remainingTasks">0</p>
+          </div>
+          <span class="stat-caption">One step at a time</span>
+        </article>
+      </section>
+
+      <section class="progress-card" aria-labelledby="progress-title">
+        <div class="progress-heading">
+          <div>
+            <p class="eyebrow">YOUR MOMENTUM</p>
+            <h2 id="progress-title">Look at you go <span aria-hidden="true">✦</span></h2>
+          </div>
+          <p class="progress-percent" id="progressText">0% complete</p>
+        </div>
+        <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Task completion progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-footnote" id="progressMessage">Every task you finish is progress worth celebrating.</p>
+      </section>
+
+      <div class="content-grid">
+        <section class="tasks-panel panel" aria-labelledby="tasks-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">THE GAME PLAN</p>
+              <h2 id="tasks-heading">Your tasks <span class="task-count" id="visibleTaskCount">0</span></h2>
+            </div>
+            <div class="filter-group" role="group" aria-label="Filter tasks">
+              <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-filter="pending" aria-pressed="false">To do</button>
+              <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Done</button>
+            </div>
+          </div>
+
+          <p class="storage-note" id="storageNotice" role="status" hidden></p>
+          <ul class="task-list" id="tasksList" aria-live="polite" aria-relevant="additions removals text"></ul>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-illustration" aria-hidden="true">
+              <span class="empty-sun"></span>
+              <span class="empty-page"></span>
+              <span class="empty-check">✓</span>
+            </div>
+            <h3 id="emptyTitle">Your next chapter starts here.</h3>
+            <p id="emptyMessage">Add your first task and give that goal a place to land.</p>
+          </div>
+        </section>
+
+        <aside class="side-column">
+          <section class="add-panel panel" aria-labelledby="add-heading">
+            <div class="add-heading-row">
+              <div class="add-icon" aria-hidden="true">＋</div>
+              <div>
+                <p class="eyebrow">MAKE IT HAPPEN</p>
+                <h2 id="add-heading">Add a task</h2>
+              </div>
+            </div>
+            <p class="panel-intro">Big assignment or tiny errand — get it out of your head and onto your list.</p>
+
+            <form id="taskForm" novalidate>
+              <div class="form-field">
+                <label for="taskTitle">Task name</label>
+                <input id="taskTitle" name="taskTitle" type="text" maxlength="120" placeholder="e.g. Review biology notes" autocomplete="off" aria-describedby="titleError" required />
+                <p class="field-error" id="titleError" hidden></p>
+              </div>
+              <div class="form-field">
+                <label for="taskDeadline">Deadline</label>
+                <input id="taskDeadline" name="taskDeadline" type="date" aria-describedby="deadlineHint deadlineError" required />
+                <p class="field-hint" id="deadlineHint">Pick the day you want to have it done.</p>
+                <p class="field-error" id="deadlineError" hidden></p>
+              </div>
+              <button class="add-button" type="submit">
+                <span>Add to my list</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+              </button>
+              <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="tip-card" aria-labelledby="tip-heading">
+            <div class="tip-topline"><span class="tip-sparkle" aria-hidden="true">✦</span><span class="tip-label">A LITTLE STUDY WISDOM</span></div>
+            <h2 id="tip-heading">Make it smaller.</h2>
+            <p>A giant task feels easier when you turn it into the next tiny step. Start there. You’ve got this.</p>
+            <div class="tip-footer"><span class="tip-line"></span><span>Progress over perfection</span></div>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="page-footer">
+        <span>Made for your next big thing.</span>
+        <span><span class="footer-heart" aria-hidden="true">♥</span> Your tasks stay in this browser.</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
